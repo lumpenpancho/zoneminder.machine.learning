@@ -4,6 +4,8 @@ docker run -d --name="Zoneminder" \
 --net="bridge" \
 --privileged="false" \
 --shm-size="8G" \
+--restart="unless-stopped" \
+-h "zoneminder.fritz.box" \
 -p 8443:443/tcp \
 -p 9000:9000/tcp \
 -e TZ="Europe/Andorra" \
@@ -11,6 +13,6 @@ docker run -d --name="Zoneminder" \
 -e PGID="100" \
 -e MULTI_PORT_START="0" \
 -e MULTI_PORT_END="0" \
--v "/mnt/cache/appdata/Zoneminder":"/config":rw \
--v "/mnt/cache/appdata/Zoneminder/data":"/var/cache/zoneminder":rw \
-lumpenpancho/zoneminder.machine.learning
+-v "/mnt/Zoneminder":"/config":rw \
+-v "/mnt/Zoneminder/data":"/var/cache/zoneminder":rw \
+dlandon/zoneminder.machine.learning
